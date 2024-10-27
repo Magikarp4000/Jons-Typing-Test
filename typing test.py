@@ -2,6 +2,8 @@
 
 import tkinter as tk
 from tkinter.font import Font
+
+import os
 import random
 import time
 
@@ -343,7 +345,8 @@ def generate_text(num_words):
     # Convert to set to remove duplicates if any exist
     # Convert back to list for random.sample()
     try:
-        words_list = list(set(open("words.txt").read().split()))
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        words_list = list(set(open(f"{dir_path}/words.txt").read().split()))
     except FileNotFoundError:
         error_msg = "Error: Text file not found. Please check the file name."
         return error_msg
